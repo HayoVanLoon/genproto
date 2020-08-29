@@ -17,9 +17,13 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GreeterClient interface {
+	// Creates a Greeting for later use.
 	CreateGreeting(ctx context.Context, in *CreateGreetingRequest, opts ...grpc.CallOption) (*Greeting, error)
+	// Retrieves a Greeting.
 	GetGreeting(ctx context.Context, in *GetGreetingRequest, opts ...grpc.CallOption) (*Greeting, error)
+	// Lists all Greetings.
 	ListGreetings(ctx context.Context, in *ListGreetingsRequest, opts ...grpc.CallOption) (*ListGreetingsResponse, error)
+	// Lists all Hugs.
 	ListHugs(ctx context.Context, in *ListHugsRequest, opts ...grpc.CallOption) (*ListHugsResponse, error)
 }
 
@@ -33,7 +37,7 @@ func NewGreeterClient(cc grpc.ClientConnInterface) GreeterClient {
 
 func (c *greeterClient) CreateGreeting(ctx context.Context, in *CreateGreetingRequest, opts ...grpc.CallOption) (*Greeting, error) {
 	out := new(Greeting)
-	err := c.cc.Invoke(ctx, "/greeter.Greeter/CreateGreeting", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/hayovanloon.greeter.Greeter/CreateGreeting", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +46,7 @@ func (c *greeterClient) CreateGreeting(ctx context.Context, in *CreateGreetingRe
 
 func (c *greeterClient) GetGreeting(ctx context.Context, in *GetGreetingRequest, opts ...grpc.CallOption) (*Greeting, error) {
 	out := new(Greeting)
-	err := c.cc.Invoke(ctx, "/greeter.Greeter/GetGreeting", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/hayovanloon.greeter.Greeter/GetGreeting", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +55,7 @@ func (c *greeterClient) GetGreeting(ctx context.Context, in *GetGreetingRequest,
 
 func (c *greeterClient) ListGreetings(ctx context.Context, in *ListGreetingsRequest, opts ...grpc.CallOption) (*ListGreetingsResponse, error) {
 	out := new(ListGreetingsResponse)
-	err := c.cc.Invoke(ctx, "/greeter.Greeter/ListGreetings", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/hayovanloon.greeter.Greeter/ListGreetings", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +64,7 @@ func (c *greeterClient) ListGreetings(ctx context.Context, in *ListGreetingsRequ
 
 func (c *greeterClient) ListHugs(ctx context.Context, in *ListHugsRequest, opts ...grpc.CallOption) (*ListHugsResponse, error) {
 	out := new(ListHugsResponse)
-	err := c.cc.Invoke(ctx, "/greeter.Greeter/ListHugs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/hayovanloon.greeter.Greeter/ListHugs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,9 +75,13 @@ func (c *greeterClient) ListHugs(ctx context.Context, in *ListHugsRequest, opts 
 // All implementations must embed UnimplementedGreeterServer
 // for forward compatibility
 type GreeterServer interface {
+	// Creates a Greeting for later use.
 	CreateGreeting(context.Context, *CreateGreetingRequest) (*Greeting, error)
+	// Retrieves a Greeting.
 	GetGreeting(context.Context, *GetGreetingRequest) (*Greeting, error)
+	// Lists all Greetings.
 	ListGreetings(context.Context, *ListGreetingsRequest) (*ListGreetingsResponse, error)
+	// Lists all Hugs.
 	ListHugs(context.Context, *ListHugsRequest) (*ListHugsResponse, error)
 	mustEmbedUnimplementedGreeterServer()
 }
@@ -110,7 +118,7 @@ func _Greeter_CreateGreeting_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/greeter.Greeter/CreateGreeting",
+		FullMethod: "/hayovanloon.greeter.Greeter/CreateGreeting",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(GreeterServer).CreateGreeting(ctx, req.(*CreateGreetingRequest))
@@ -128,7 +136,7 @@ func _Greeter_GetGreeting_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/greeter.Greeter/GetGreeting",
+		FullMethod: "/hayovanloon.greeter.Greeter/GetGreeting",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(GreeterServer).GetGreeting(ctx, req.(*GetGreetingRequest))
@@ -146,7 +154,7 @@ func _Greeter_ListGreetings_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/greeter.Greeter/ListGreetings",
+		FullMethod: "/hayovanloon.greeter.Greeter/ListGreetings",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(GreeterServer).ListGreetings(ctx, req.(*ListGreetingsRequest))
@@ -164,7 +172,7 @@ func _Greeter_ListHugs_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/greeter.Greeter/ListHugs",
+		FullMethod: "/hayovanloon.greeter.Greeter/ListHugs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(GreeterServer).ListHugs(ctx, req.(*ListHugsRequest))
@@ -173,7 +181,7 @@ func _Greeter_ListHugs_Handler(srv interface{}, ctx context.Context, dec func(in
 }
 
 var _Greeter_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "greeter.Greeter",
+	ServiceName: "hayovanloon.greeter.Greeter",
 	HandlerType: (*GreeterServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
